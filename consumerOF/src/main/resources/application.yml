@@ -1,0 +1,18 @@
+server:
+  port: 8079
+
+eureka:
+  client:
+    register-with-eureka: false
+#    fetch-registry: true
+    service-url:
+      defaultZone: http://localhost:7001/eureka,http://localhost:7002/eurekax
+
+ribbon:
+  ReadTimeout: 10000
+  ConnectTimeout: 10000
+
+
+logging:
+  level: #feign以什么级别显示日志
+    com.atguigu.consumer.service.OpenFeignService: debug

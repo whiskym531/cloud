@@ -1,0 +1,13 @@
+server:
+  port: 8071
+
+eureka:
+  client:
+    register-with-eureka: false
+    #    fetch-registry: true
+    service-url:
+      defaultZone: http://localhost:7001/eureka #,http://localhost:7002/eurekax
+
+feign:
+  hystrix:
+    enabled: true
