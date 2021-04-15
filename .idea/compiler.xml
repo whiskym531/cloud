@@ -14,6 +14,7 @@
         <module name="cloud-provider-payment8004" />
         <module name="cloud-provider-payment8002" />
         <module name="cloud-provider-payment8001" />
+        <module name="redis2.8" />
         <module name="consumerOF-hystrix" />
         <module name="customerZK" />
         <module name="cloud-provider-hystrix-payment8001" />
@@ -33,6 +34,7 @@
       <module name="consumerOF" target="1.8" />
       <module name="consumerOF-hystrix" target="1.8" />
       <module name="customerZK" target="1.8" />
+      <module name="redis2.8" target="1.8" />
     </bytecodeTargetLevel>
   </component>
 </project>

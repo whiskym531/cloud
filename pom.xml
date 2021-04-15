@@ -20,6 +20,7 @@
         <module>consumerOF</module>
         <module>cloud-provider-hystrix-payment8001</module>
         <module>consumerOF-hystrix</module>
+        <module>redis2.8</module>
     </modules>
     <packaging>pom</packaging>
 
