@@ -10,7 +10,7 @@ import org.springframework.web.bind.annotation.GetMapping;
  */
 
 /**
- * fallback属性指定统一服务降级走FeignFallbackService里的方法
+ * fallback属性指定统一服务降级走FeignFallbackService里的方法                 ↓这个class,而且这个class要交给spring
  * 用这个功能记得在yml里配置feign: hystrix: enabled: true
  */
 @FeignClient(value = "cloud-payment-service-hystrix",fallback = FeignFallbackService.class)

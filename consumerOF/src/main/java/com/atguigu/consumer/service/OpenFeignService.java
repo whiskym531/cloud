@@ -15,5 +15,5 @@ import org.springframework.web.bind.annotation.PathVariable;
 public interface OpenFeignService {
 
     @GetMapping("/payment/find/{id}")
-    CommonResult<Payment> findById(@PathVariable Long id);
+    CommonResult<Payment> findById(@PathVariable(value = "id") Long id); //在Feign里必加这个value值，否则启动报错
 }

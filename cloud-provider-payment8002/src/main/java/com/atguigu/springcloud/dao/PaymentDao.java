@@ -1,6 +1,7 @@
 package com.atguigu.springcloud.dao;
 
 import com.atguigu.springcloud.entities.Payment;
+import lombok.extern.slf4j.Slf4j;
 import org.apache.ibatis.annotations.Mapper;
 import org.springframework.stereotype.Repository;
 
@@ -9,9 +10,16 @@ import org.springframework.stereotype.Repository;
  * Author: warm
  * Date: 2020/12/4
  */
+@Slf4j
 @Repository
-public interface PaymentDao {
-    int create(Payment payment);
+public class PaymentDao {
+    public int create(Payment payment){
+        log.info("payment8002 paymentDao create ---- payment :{}",payment);
+        return 531;
+    }
 
-    Payment findById(Long id);
+    public Payment findById(Long id){
+        log.info("payment8002 paymentDao findById ---- id:{}",id);
+        return new Payment(9L,"666");
+    }
 }
