@@ -9,7 +9,9 @@ import com.atguigu.springcloud.entities.Payment;
  * Date: 2020/12/2
  */
 public interface PaymentService {
-    int create (Payment payment);
+    Boolean create (Payment payment);
 
     Payment findById(Long id);
+
+    Boolean incrStock(Long id);
 }

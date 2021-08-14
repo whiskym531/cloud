@@ -13,7 +13,7 @@ import org.springframework.web.client.RestTemplate;
 @Configuration
 public class ApplicationContextConfig {
     @Bean
-//    @LoadBalanced
+    @LoadBalanced    //这个不加就会报错，找不到提供者。UnknownHostException
     public RestTemplate getRestTemplate() {
         return new RestTemplate();
     }

@@ -6,9 +6,7 @@ import com.atguigu.springcloud.entities.Payment;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.cloud.client.ServiceInstance;
 import org.springframework.cloud.client.discovery.DiscoveryClient;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 import org.springframework.web.client.RestTemplate;
 
 import javax.annotation.Resource;
@@ -43,6 +41,14 @@ public class OrderController {
     public CommonResult<Payment> findById(@PathVariable Long id){
         return restTemplate.getForObject(PAYMENT_URL+"/payment/find/"+id,CommonResult.class);
 
+    }
+    @RequestMapping(value = "/payment/secKill")
+    public CommonResult secKill(@RequestParam("id") Long id){
+        CommonResult forObject = restTemplate.getForObject(PAYMENT_URL + "/payment/secKill?id=" + id, CommonResult.class);
+        if (forObject.getMessage().contains("8003")){
+            System.out.println("8003");
+        }
+        return forObject;
     }
     @GetMapping("/consumer/getlb")
     public String getService(){

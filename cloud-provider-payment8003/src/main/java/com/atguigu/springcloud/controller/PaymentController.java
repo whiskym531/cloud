@@ -5,7 +5,6 @@ import com.atguigu.springcloud.entities.Payment;
 import com.atguigu.springcloud.service.PaymentService;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Value;
-import org.springframework.context.annotation.Bean;
 import org.springframework.web.bind.annotation.*;
 
 import javax.annotation.Resource;
@@ -53,22 +52,22 @@ public class PaymentController {
 
     @RequestMapping(value = "/payment/secKill")
     public CommonResult secKill(@RequestParam("id") Long id){
-        log.info("this is 8002 service,sir");
+        log.info("this is 8003 service,sir");
         try {
             Payment payment = paymentService.findById(id);
             if (payment.getStock() > 0){
                 Thread.sleep(100);
                 paymentService.incrStock(id);
                 System.out.println("secKill success");
-                return new CommonResult(200,"secKill success---8002");
+                return new CommonResult(200,"secKill success---8003");
             }else {
                 System.out.println("secKill failed,out of stock...");
-                return new CommonResult(200,"secKill failed,out of stock...8002");
+                return new CommonResult(200,"secKill failed,out of stock...8003");
             }
         } catch (Exception e) {
             e.printStackTrace();
             System.out.println("secKill failed,system error...");
-            return new CommonResult(200,"secKill failed,system error...8002");
+            return new CommonResult(200,"secKill failed,system error...8003");
         }
     }
 }
