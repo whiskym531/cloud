@@ -1,0 +1,31 @@
+server:
+  port: 1001
+
+spring:
+  application:
+    name: cloud-gateway
+  cloud:
+    gateway:
+      discovery:
+        locator:
+          enabled: true
+      routes:
+        - id: payment_route
+          uri: lb://cloud-payment-service
+          #uri: http://localhost:8002
+          predicates:
+            - Path=/payment/**
+#        - id: payment_route2
+#          uri: lb://cloud-payment-service
+#          #uri: http://localhost:8003/asdasd # 不会带上访问路径，比如这里的/asdasd其实跟没写一样
+#          predicates:                         # @see com.carrot.springcloud.config.GatewayConfig
+#            - Path=/payment/lb/**
+
+eureka:
+  instance:
+    instance-id: gateway1001
+  client:
+    register-with-eureka: true
+    fetch-registry: true
+    service-url:
+      defaultZone: http://localhost:7001/eureka #,http://localhost:7002/eureka
