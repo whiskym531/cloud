@@ -13,12 +13,25 @@ spring:
         - id: payment_route
           uri: lb://cloud-payment-service
           #uri: http://localhost:8002
-          predicates:
+          predicates:   #predicates断言，其实就是需要符合的条件，有很多种
+            #- After=2021-09-09T22:29:06.380+08:00[Asia/Shanghai]  #满足时间在这之后才可以
+            #- Before=2021-09-09T22:29:06.380+08:00[Asia/Shanghai] #时间在这之前,时间格式可以用ZonedDateTime.now()获取看看
+            #- Between=    #时间在这之间，两个时间点，逗号隔开
+            #- Cookie=#{cookie name},#{正则表达式} #可以用curl来测  curl http://localhost:1001/payment/find/1 --cookie "key=value"
+            #- Header=    #请求头  curl -H "key:value"          #Host
+            #- Host=      #就是请求头key为Host
             - Path=/payment/**
+            #- Method=        #请求方法类型GET啊POST啊
+            #- Query=#{name},#{正则}          #要有请求参数name并满足正则
+                                                                    #ReadBodyPredicateFactory
+                                                                    #RemoteAddr
+                                                                    #Weight
+                                                                    #CloudFoundryRouteService
+
 #        - id: payment_route2
 #          uri: lb://cloud-payment-service
 #          #uri: http://localhost:8003/asdasd # 不会带上访问路径，比如这里的/asdasd其实跟没写一样
-#          predicates:                         # @see com.carrot.springcloud.config.GatewayConfig
+#          predicates:                         #也可以在代码里配置断言 @see com.carrot.springcloud.config.GatewayConfig
 #            - Path=/payment/lb/**
 
 eureka:
@@ -29,3 +42,16 @@ eureka:
     fetch-registry: true
     service-url:
       defaultZone: http://localhost:7001/eureka #,http://localhost:7002/eureka
+#After
+#Before
+#Between
+#Cookie
+#Header
+#Host
+#Method
+#Path
+#Query
+#ReadBodyPredicateFactory
+#RemoteAddr
+#Weight
+#CloudFoundryRouteService
